@@ -12,23 +12,23 @@
 
 # theme                  : "minimal-mistakes-jekyll"
 # remote_theme           : "mmistakes/minimal-mistakes"
-minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+minimal_mistakes_skin    : "air" # "default", "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Michael Norris (Site Title)"
+title                    : "Michael Norris"
 title_separator          : "-"
-subtitle                 : # site tagline that appears below site title in masthead
+subtitle                 : "0xm0nk" # site tagline that appears below site title in masthead
 name                     : "Michael Norris"
-description              : "My personal website."
+description              : "I like computers and stuff."
 url                      : "https://norrismw.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
-baseurl                  : "/" # the subpath of your site, e.g. "/blog"
-repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
+baseurl                  : # the subpath of your site, e.g. "/blog"
+repository               : "norrismw/norrismw.github.io" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 logo                     : # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
 # breadcrumbs            : false # true, false (default)
-words_per_minute         : 200
+words_per_minute         : 300
 comments:
   provider               : # false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "utterances", "custom"
   disqus:
@@ -65,9 +65,9 @@ reCaptcha:
   secret                 :
 atom_feed:
   path                   : # blank (default) uses feed.xml
-search                   : # true, false (default)
-search_full_content      : # true, false (default)
-search_provider          : # lunr (default), algolia, google
+search                   : true # false (default)
+search_full_content      : true # false (default)
+search_provider          : lunr # (default), algolia, google
 algolia:
   application_id         : # YOUR_APPLICATION_ID
   index_name             : # YOUR_INDEX_NAME
@@ -109,7 +109,7 @@ analytics:
 author:
   name             : "Michael Norris"
   avatar           : "/assets/images/wolfmoon.jpg"
-  bio              : "Personal Site"
+  bio              : "Need to come up with a good biogragphy."
   location         : "Boulder, CO"
   email            : "mwnorris89@gmail.com"
   links:
@@ -137,13 +137,13 @@ footer:
   links:
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
-      # url:
+      url: "https://twitter.com/norrismw"
     - label: "Facebook"
       icon: "fab fa-fw fa-facebook-square"
       # url:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      # url:
+      url: "https://github.com/norrismw"
     - label: "GitLab"
       icon: "fab fa-fw fa-gitlab"
       # url:
@@ -289,15 +289,14 @@ defaults:
       layout: single
       author_profile: true
       read_time: true
-      comments: # true
+      comments: #true
       share: true
       related: true
-
 
   # _pages
   - scope:
       path: ""
-      type: posts
+      type: pages
     values:
       layout: single
       author_profile: true
