@@ -7,6 +7,7 @@ header:
     image: "/assets/images/wolfmoon.jpg"
 ---
 
+{% include base_path %}
 
 {% for tag in group_names %}
   {% assign posts = group_items[forloop.index0] %}
