@@ -109,9 +109,9 @@ analytics:
 author:
   name             : "Michael Norris"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "I am an **amazing** person."
-  location         : "Planet Earth"
-  email            : "contact_me@gmail.com"
+  bio              : "Personal Site"
+  location         : "Boulder, CO"
+  email            : "mwnorris89@gmail.com"
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
