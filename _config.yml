@@ -108,7 +108,7 @@ analytics:
 # Site Author
 author:
   name             : "Michael Norris"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : "/assets/images/wolfmoon.jpg"
   bio              : "Personal Site"
   location         : "Boulder, CO"
   email            : "mwnorris89@gmail.com"
