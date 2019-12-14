@@ -2,7 +2,8 @@
 title: "Assignment 0x01: Shell_Bind_TCP Shellcode"
 date: 2019-10-19
 tags: [assembly, c, bind shell, linux, SLAE]
-excerpt: "What is an excerpt"
+excerpt: "Analysis of a bind shell written in x86 Linux assembly"
+classes: wide
 ---
 
 ## Objectives
