@@ -16,7 +16,7 @@ minimal_mistakes_skin    : "default" # "default", "air", "aqua", "contrast", "da
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Michael Norris"
+title                    : "norrismw.github.io"
 title_separator          : "-"
 subtitle                 : "CCNA, OSCP, SLAE" # site tagline that appears below site title in masthead
 name                     : "Michael Norris"
@@ -109,7 +109,7 @@ analytics:
 author:
   name             : "Michael Norris"
   avatar           : "/assets/images/wolfmoon.jpg"
-  bio              : "Need to come up with a good biogragphy."
+  bio              : "Never stop learning"
   location         : "Boulder, CO"
   email            : # "mwnorris89@gmail.com"
   links:
