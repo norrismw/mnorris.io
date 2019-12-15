@@ -2,7 +2,7 @@
 main:
   - title: "Posts by Category"
     url: /categories/
-  - title: "About"
+  - title: "About the Author"
     url: /about/
   - title: "Contact"
     url: /contact/
