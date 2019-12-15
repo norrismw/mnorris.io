@@ -5,10 +5,10 @@ header:
     image: "/assets/images/black_sand.jpg"
 ---
 ## Certifications:
-CCNA, OSCP, SLAE32
+CCNA OSCP SLAE32
 
 ## What I Do:
-I pen test and tinker with network devices.
+Penetration tester. Network device tinkerer.
 
 ## For Fun:
-I enjoy writing, biking, and studying foreign languages.
+Writing, biking, and studying foreign languages.
