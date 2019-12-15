@@ -1,8 +1,8 @@
 ---
-title: "SLAE Assignment 0x03: Egg Hunter Shellcode"
+title: "SLAE32 0x03: Egg Hunter Shellcode"
 date: 2019-10-31
-category: [SLAE]
-tags: [assembly, exploit development, egg hunter, linux, SLAE]
+category: [SLAE32]
+tags: [assembly, exploit development, egg hunter, linux, SLAE32]
 header:
     teaser: "/assets/images/slae/eggs.jpg"
 ---

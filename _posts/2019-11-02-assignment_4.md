@@ -1,8 +1,8 @@
 ---
-title: "SLAE Assignment 0x04: Custom Encoding"
+title: "SLAE32 0x04: Custom Encoding"
 date: 2019-11-02
-category: [SLAE]
-tags: [assembly, python, exploit development, encoder, linux, SLAE]
+category: [SLAE32]
+tags: [assembly, python, exploit development, encoder, linux, SLAE32]
 header:
     teaser: "/assets/images/slae/encode.jpg"
 ---

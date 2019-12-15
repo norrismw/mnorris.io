@@ -1,8 +1,8 @@
 ---
-title: "SLAE Assignment 0x06: Polymorphic Shell-Storm Shellcode"
+title: "SLAE32 0x06: Polymorphic Shell-Storm Shellcode"
 date: 2019-11-17
-category: [SLAE]
-tags: [assembly, exploit development, polymorphic shellcode, linux, SLAE]
+category: [SLAE32]
+tags: [assembly, exploit development, polymorphic shellcode, linux, SLAE32]
 header:
     teaser: "/assets/images/slae/polymorph.jpg"
 ---

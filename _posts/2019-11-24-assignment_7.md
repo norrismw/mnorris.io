@@ -1,8 +1,8 @@
 ---
-title: "SLAE Assignment 0x07: Custom Crypter"
+title: "SLAE32 0x07: Custom Crypter"
 date: 2019-11-24
-category: [SLAE]
-tags: [assembly, python, exploit development, custom crypter, linux, SLAE]
+category: [SLAE32]
+tags: [assembly, python, exploit development, custom crypter, linux, SLAE32]
 header:
     teaser: "/assets/images/slae/crypt.jpg"
 ---

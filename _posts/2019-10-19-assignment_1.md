@@ -1,8 +1,8 @@
 ---
-title: "SLAE Assignment 0x01: Shell_Bind_TCP Shellcode"
+title: "SLAE32 0x01: Shell_Bind_TCP Shellcode"
 date: 2019-10-19
-category: [SLAE]
-tags: [assembly, c, python, exploit development, bind shell, linux, SLAE]
+category: [SLAE32]
+tags: [assembly, c, python, exploit development, bind shell, linux, SLAE32]
 header:
     teaser: "/assets/images/slae/shell.jpg"
 ---

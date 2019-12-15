@@ -1,8 +1,8 @@
 ---
-title: "SLAE Assignment 0x05: msfvenom Shellcode Analysis"
+title: "SLAE32 0x05: msfvenom Shellcode Analysis"
 date: 2019-11-09
-category: [SLAE]
-tags: [assembly, exploit development, msfvenom, linux, SLAE]
+category: [SLAE32]
+tags: [assembly, exploit development, msfvenom, linux, SLAE32]
 header:
     teaser: "/assets/images/slae/venom.jpg"
 ---
