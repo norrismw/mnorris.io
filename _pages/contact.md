@@ -2,7 +2,7 @@
 title: "Contact"
 permalink: /contact/
 header:
-    overlay_image: "/assets/images/dark_waves.jpg"
+    overlay_image: "/assets/images/dark_bubbles.jpg"
 ---
 
 Contact me
