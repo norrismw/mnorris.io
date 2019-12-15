@@ -111,7 +111,7 @@ author:
   avatar           : "/assets/images/wolfmoon.jpg"
   bio              : "Need to come up with a good biogragphy."
   location         : "Boulder, CO"
-  email            : "mwnorris89@gmail.com"
+  email            : # "mwnorris89@gmail.com"
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
