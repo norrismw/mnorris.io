@@ -4,7 +4,6 @@ date: 2019-11-17
 category: [SLAE]
 tags: [assembly, exploit development, polymorphic shellcode, linux, SLAE]
 ---
-## Overview
 Polymorphic shellcode can be described as any shellcode that performs the same function as an existing shellcode, but with different instructions. In a similar vein to encoded shellcode, polymorphic shellcode is most commonly used in an attempt to evade anti-virus software and intrusion detection systems.
 
 Generally speaking, anti-virus software and intrusion detection systems (IDS) scan data for known patterns (signatures) that correspond to known malicious code or computer viruses. If an anti-virus software or IDS system detects such patterns, then the code will not be executed by the system. As a way to circumvent this, polymorphic shellcode can be used in place of the original shellcode with the hopes that the signature for the polymorphic shellcode is not in the signature database of the anti-virus or IDS software. 

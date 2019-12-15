@@ -4,7 +4,6 @@ date: 2019-10-25
 category: [SLAE]
 tags: [assembly, c, python, exploit development, reverse shell, linux, SLAE]
 ---
-## Overview
 In contrast to a bind shell (which is explained in the previous post), a reverse shell is a type of shell in which the system on which the code is run connects a TCP socket to a remote IP address and port that have been designated to listen for incoming connections prior to the execution of the reverse shell. In other words, when a reverse shell is used, the system on which the reverse shell is executed acts as the system that initiates the connection while the remote system acts as the listener. Upon succesful connection to the remote system, a shell will be spawned on the system on which the code is run.
 
 As previously demonstrated, it is wise to begin by analyzing the code of a TCP reverse shell written using a higher level language. The C program shown in the upcoming section will be used for this purpose. It is worth nothing here that there are many similarities in code between the two TCP shell types, so references to the previous post will be common, and some previous explanations may be reused. The focus will lie on the major differences in code between the TCP bind shell and the TCP reverse shell.

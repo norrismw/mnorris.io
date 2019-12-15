@@ -4,7 +4,6 @@ date: 2019-10-19
 category: [SLAE]
 tags: [assembly, c, python, exploit development, bind shell, linux, SLAE]
 ---
-## Overview
 A bind shell is a type of shell in which the system on which the code is run binds a TCP socket that is designated to listen for incoming connections to a specified port and IP address. When a bind shell is used, the system on which the bind shell is executed acts as the listener. When a connection is accepted on the bound and listening socket on the designated port and IP address, a shell will be spawned on the system on which the code is run. 
 
 To more fully understand the underlying system calls required to create a TCP bind shell written in assembly, it is logical to begin by analyzing a TCP bind shell written using a higher level language such as C. For this purpose, the C program shown in the proceeding (first) section of this document will instruct a system to listen on all available network interfaces for connections on TCP port 4444. When a connection is established, `/bin/sh` will be executed on the system and input and output will be redirected to the system that established the TCP connection. 

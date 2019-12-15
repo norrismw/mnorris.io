@@ -4,7 +4,6 @@ date: 2019-11-02
 category: [SLAE]
 tags: [assembly, python, exploit development, encoder, linux, SLAE]
 ---
-## Overview
 Most often, the purpose of a shellcode encoder is to obfuscate a malicious shellcode payload in an attempt to evade anti-virus detection that may be running on the system executing the payload. Additionally, encoders can be used in an attempt to remove bad characters (e.g. null bytes) from a shellcode payload. To accomplish this, various techniques can be used to obfuscate the shellcode. Techniques include performing logical or mathematical operations on the bytes, or rearranging the order of bytes. An example of a commonly known (and very functional) encoder is Shikata Ga Nai.
 
 Once the original shellcode is encoded, a decoder stub must be included with the payload. The decoder stub serves to decode the encoded payload back to its original functional state and to execute the decoded shellcode.
