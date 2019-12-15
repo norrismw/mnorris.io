@@ -2,15 +2,8 @@
 title: "Assignment 0x01: Shell_Bind_TCP Shellcode"
 date: 2019-10-19
 category: [SLAE]
-tags: [assembly, c, bind shell, linux, SLAE]
-excerpt: "Analysis of a bind shell written in x86 Linux assembly"
+tags: [assembly, c, python, exploit development, bind shell, linux, SLAE]
 ---
-
-## Objectives
-Create a Shell_Bind_TCP shellcode that;
-1. Binds to an easily configurable port number
-2. Executes a shell on an incoming connection
-
 ## Overview
 A bind shell is a type of shell in which the system on which the code is run binds a TCP socket that is designated to listen for incoming connections to a specified port and IP address. When a bind shell is used, the system on which the bind shell is executed acts as the listener. When a connection is accepted on the bound and listening socket on the designated port and IP address, a shell will be spawned on the system on which the code is run. 
 
@@ -19,6 +12,11 @@ To more fully understand the underlying system calls required to create a TCP bi
 After analysis of the C program is complete, the code can more easily be re-written in assembly. This processes is documented and explained in detail in the second section of this post. 
 
 Finally, the third section of this paper demonstrates a program written in Python that allows a user to configure a port number to be used in the Shell_Bind_TCP shellcode.
+
+## Objectives
+Create a Shell_Bind_TCP shellcode that;
+1. Binds to an easily configurable port number
+2. Executes a shell on an incoming connection
 
 ## Analysis of Shell_Bind_TCP.c
 The following code has been commented in a way that aims to break the program down into distinct sections to be referenced during analysis. A brief explanation of each commented code section will be provided in this section of the post.
