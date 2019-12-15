@@ -2,7 +2,7 @@
 title: "About"
 permalink: /about/
 header:
-    overlay_image: "/assets/images/black_sand.jpg"
+    image: "/assets/images/black_sand.jpg"
 ---
 Test
 
