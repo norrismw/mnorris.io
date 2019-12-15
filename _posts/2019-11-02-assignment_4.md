@@ -1,5 +1,5 @@
 ---
-title: "Assignment 0x04: Custom Encoding"
+title: "SLAE Assignment 0x04: Custom Encoding"
 date: 2019-11-02
 category: [SLAE]
 tags: [assembly, python, exploit development, encoder, linux, SLAE]

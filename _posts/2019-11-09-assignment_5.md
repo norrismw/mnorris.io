@@ -1,5 +1,5 @@
 ---
-title: "Assignment 0x05: msfvenom Shellcode Analysis"
+title: "SLAE Assignment 0x05: msfvenom Shellcode Analysis"
 date: 2019-11-09
 category: [SLAE]
 tags: [assembly, exploit development, msfvenom, linux, SLAE]

@@ -1,5 +1,5 @@
 ---
-title: "Assignment 0x06: Polymorphic Shell-Storm Shellcode"
+title: "SLAE Assignment 0x06: Polymorphic Shell-Storm Shellcode"
 date: 2019-11-17
 category: [SLAE]
 tags: [assembly, exploit development, polymorphic shellcode, linux, SLAE]

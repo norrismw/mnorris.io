@@ -1,5 +1,5 @@
 ---
-title: "Assignment 0x02: Shell_Reverse_TCP Shellcode"
+title: "SLAE Assignment 0x02: Shell_Reverse_TCP Shellcode"
 date: 2019-10-25
 category: [SLAE]
 tags: [assembly, c, python, exploit development, reverse shell, linux, SLAE]

@@ -1,5 +1,5 @@
 ---
-title: "Assignment 0x07: Custom Crypter"
+title: "SLAE Assignment 0x07: Custom Crypter"
 date: 2019-11-24
 category: [SLAE]
 tags: [assembly, python, exploit development, custom crypter, linux, SLAE]

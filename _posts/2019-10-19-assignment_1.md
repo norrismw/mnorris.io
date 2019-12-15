@@ -1,5 +1,5 @@
 ---
-title: "Assignment 0x01: Shell_Bind_TCP Shellcode"
+title: "SLAE Assignment 0x01: Shell_Bind_TCP Shellcode"
 date: 2019-10-19
 category: [SLAE]
 tags: [assembly, c, python, exploit development, bind shell, linux, SLAE]
