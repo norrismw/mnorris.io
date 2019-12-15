@@ -2,7 +2,7 @@
 title: "About the Author"
 permalink: /about/
 header:
-    image: "/assets/images/black_sand.jpg"
+    image: "/assets/images/site/black_sand.jpg"
 ---
 ## Certifications:
 CCNA OSCP SLAE32
