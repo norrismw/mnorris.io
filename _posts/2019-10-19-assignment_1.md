@@ -3,6 +3,8 @@ title: "Assignment 0x01: Shell_Bind_TCP Shellcode"
 date: 2019-10-19
 category: [SLAE]
 tags: [assembly, c, python, exploit development, bind shell, linux, SLAE]
+header:
+    teaser: "/assets/images/slae/shell.jpg"
 ---
 A bind shell is a type of shell in which the system on which the code is run binds a TCP socket that is designated to listen for incoming connections to a specified port and IP address. When a bind shell is used, the system on which the bind shell is executed acts as the listener. When a connection is accepted on the bound and listening socket on the designated port and IP address, a shell will be spawned on the system on which the code is run. 
 

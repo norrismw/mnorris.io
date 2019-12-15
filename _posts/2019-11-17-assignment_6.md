@@ -3,6 +3,8 @@ title: "Assignment 0x06: Polymorphic Shell-Storm Shellcode"
 date: 2019-11-17
 category: [SLAE]
 tags: [assembly, exploit development, polymorphic shellcode, linux, SLAE]
+header:
+    teaser: "/assets/images/slae/polymorph.jpg"
 ---
 Polymorphic shellcode can be described as any shellcode that performs the same function as an existing shellcode, but with different instructions. In a similar vein to encoded shellcode, polymorphic shellcode is most commonly used in an attempt to evade anti-virus software and intrusion detection systems.
 

@@ -3,6 +3,8 @@ title: "Assignment 0x03: Egg Hunter Shellcode"
 date: 2019-10-31
 category: [SLAE]
 tags: [assembly, exploit development, egg hunter, linux, SLAE]
+header:
+    teaser: "/assets/images/slae/eggs.jpg"
 ---
 In the classic stack buffer overflow scenario, execution flow can be redirected to a `JMP ESP` instruction which results in the execution of subsequent shellcode on the stack. Say that the goal is to execute a reverse shell shellcode that is 100 bytes in length. If there are at least 100 bytes worth of buffer space remaining after control of execution flow has been obtained (i.e. after the memory address to which a program should resume execution after a function has completed has been overwritten with a pointer to a `JMP ESP` instruction), then the shellcode will be stored and executed. If, however, there are less than 100 bytes worth of buffer space after control of execution flow has been obtained, then the reverse shell shellcode will not fit in the remaining available buffer space. This is where the "Egg Hunter" technique might come into play.
 

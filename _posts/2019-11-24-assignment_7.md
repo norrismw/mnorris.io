@@ -3,8 +3,10 @@ title: "Assignment 0x07: Custom Crypter"
 date: 2019-11-24
 category: [SLAE]
 tags: [assembly, python, exploit development, custom crypter, linux, SLAE]
+header:
+    teaser: "/assets/images/slae/crypt.jpg"
 ---
-In this post, an crypter program will be created and demonstrated that uses the Advanced Encryption Standard encryption specification, also known as AES. The AES standard is part of a the block cipher family. It is also important to note that AES is a symmetric-key algorithm which means that the same key is used for encryption and decrypting data. A crypter has two parts, an encryptor and a decryptor. The encryption and decryption programs will be written in Python.
+In this post, a crypter program will be created and demonstrated that uses the Advanced Encryption Standard encryption specification, also known as AES. The AES standard is part of a the block cipher family. It is also important to note that AES is a symmetric-key algorithm which means that the same key is used for encryption and decrypting data. A crypter has two parts, an encryptor and a decryptor. The encryption and decryption programs will be written in Python.
 
 In general, encryption is used to obfuscate and secure data in such a way that only authorized parties (those with the key) can access it. While encrypted messages can still be intercepted, the encrypted contents will be unintelligible to those without the decryption key. For shellcode, encryption and decryption can be used to obfuscate the shellcode within in an attempt to evade anti-virus softare. Shellcode can first be encrypted with an encryptor program, and then can be placed into a file along with decryption logic that can be compiled and run as a standalone program. The idea is that the shellcode will be obfuscated until the program is run which in turn decrypts and executes the original shellcode payload.
 
