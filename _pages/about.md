@@ -4,6 +4,11 @@ permalink: /about/
 header:
     image: "/assets/images/black_sand.jpg"
 ---
-Test
+## Certifications:
+CCNA, OSCP, SLAE32
 
-etc, etc, etc
+## What I Do:
+I pen test and tinker with network devices.
+
+## For Fun:
+I enjoy writing, biking, and studying foreign languages.
