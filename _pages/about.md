@@ -8,7 +8,7 @@ header:
 CCNA, OSCP, SLAE
 
 ## What I Do:
-Penetration tester. Network device tinkerer.
+Placeholder
 
 ## For Fun:
-Writing, biking, and studying foreign languages.
+Placeholder

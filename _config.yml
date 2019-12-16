@@ -109,7 +109,7 @@ analytics:
 author:
   name             : "Michael Norris"
   avatar           : "/assets/images/site/wolfmoon.jpg"
-  bio              : "The doer alone learneth."
+  bio              : #"The doer alone learneth."
   location         : "Boulder, CO"
   email            : # "mwnorris89@gmail.com"
   links:
