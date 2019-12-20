@@ -18,7 +18,7 @@ minimal_mistakes_skin    : "default" # "default", "air", "aqua", "contrast", "da
 locale                   : "en-US"
 title                    : "mnorris.io"
 title_separator          : "-"
-subtitle                 : "a collection of content" # site tagline that appears below site title in masthead
+subtitle                 : "odds & ends" # site tagline that appears below site title in masthead
 name                     : "Michael Norris"
 description              : # "Thoughts"
 url                      : "https://norrismw.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
