@@ -107,8 +107,8 @@ analytics:
 # Site Author
 author:
   name             : "Michael W. Norris"
-  avatar           : "/assets/images/site/wolfmoon.jpg"
-  bio              : "CCNA | OSCP | SLAE32"
+  avatar           : "/assets/images/site/mnorris_avatar.png"
+  bio              : "An average guy"
   location         : "Boulder, CO"
   email            : # "mwnorris89@gmail.com"
   links:
