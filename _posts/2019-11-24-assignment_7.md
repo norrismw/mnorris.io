@@ -6,7 +6,7 @@ tags: [assembly, python, exploit development, custom crypter, linux, SLAE32]
 header:
     teaser: "/assets/images/slae/crypt.jpg"
 ---
-In this post, a crypter program will be created and demonstrated that uses the Advanced Encryption Standard encryption specification, also known as AES. The AES standard is part of a the block cipher family. It is also important to note that AES is a symmetric-key algorithm which means that the same key is used for encryption and decrypting data. A crypter has two parts, an encryptor and a decryptor. The encryption and decryption programs will be written in Python.
+In this post, a crypter program will be created and demonstrated that uses the Advanced Encryption Standard encryption specification, also known as AES. The AES standard is part of the block cipher family. It is also important to note that AES is a symmetric-key algorithm which means that the same key is used for encrypting and decrypting data. A crypter has two parts, an encryptor and a decryptor. The encryption and decryption programs will be written in Python.
 
 In general, encryption is used to obfuscate and secure data in such a way that only authorized parties (those with the key) can access it. While encrypted messages can still be intercepted, the encrypted contents will be unintelligible to those without the decryption key. For shellcode, encryption and decryption can be used to obfuscate the shellcode within in an attempt to evade anti-virus softare. Shellcode can first be encrypted with an encryptor program, and then can be placed into a file along with decryption logic that can be compiled and run as a standalone program. The idea is that the shellcode will be obfuscated until the program is run which in turn decrypts and executes the original shellcode payload.
 
@@ -25,7 +25,7 @@ For this assignment, the `execve` shellcode from the custom encoding assignment 
 In the sections below, the encryption and decryption programs will be demonstrated and explained.
 
 #### Encryption
-The program code in full is shown below. The source code can be found on Git Hub. An overview of the program functionality will follow the code.
+The program code in full is shown below. The source code can be found on [GitHub](https://github.com/norrismw/SLAE). An overview of the program functionality will follow the code.
 
 ```python
 #!/usr/bin/python3
@@ -89,7 +89,7 @@ Key: SLAE-1469
 ```
 
 #### Decryption
-The program code in full is shown below. The source code can be found on Git Hub. An overview of the program functionality will follow the code.
+The program code in full is shown below. The source code can be found on [GitHub](https://github.com/norrismw/SLAE). An overview of the program functionality will follow the code.
 
 ```python
 #!/usr/bin/python3
