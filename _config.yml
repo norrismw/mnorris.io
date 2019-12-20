@@ -16,7 +16,7 @@ minimal_mistakes_skin    : "default" # "default", "air", "aqua", "contrast", "da
 
 # Site Settings
 locale                   : "en-US"
-title                    : "norrismw.github.io"
+title                    : "mnorris.io"
 title_separator          : "-"
 subtitle                 : "a collection of content" # site tagline that appears below site title in masthead
 name                     : "Michael Norris"
