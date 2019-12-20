@@ -129,7 +129,7 @@ author:
       url: "https://github.com/norrismw"
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
-      # url: "https://instagram.com/"
+      url: "https://instagram.com/norrismw"
 
 # Site Footer
 footer:
@@ -151,7 +151,7 @@ footer:
       # url:
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
-      # url:
+      url: "https://instagram.com/norrismw"
 
 
 # Reading Files
