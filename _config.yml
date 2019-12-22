@@ -110,11 +110,11 @@ author:
   avatar           : "/assets/images/site/wolfmoon.jpg"
   bio              : "*Archetypal computer nerd with a pinch of personality.*"
   location         : "Boulder, CO"
-  email            : # "mwnorris89@gmail.com"
+  email            : # "info@mnorris.io"
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
-      # url: mailto:your.name@email.com
+      # url: mailto:info@mnorris.io
     - label: "Website"
       icon: "fas fa-fw fa-link"
       # url: "https://your-website.com"
