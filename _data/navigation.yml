@@ -1,5 +1,7 @@
 # main links
 main:
+  - titel: "Home"
+    url: /
   - title: "Posts by Category"
     url: /categories/
   - title: "About the Author"
