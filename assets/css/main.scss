@@ -5,7 +5,6 @@
 @charset "utf-8";
 
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
-@import "minimal-mistakes"; // main partials
 
 /* sunrise syntax highlighting (base16) */
 $base00: #1d1f21;
@@ -24,3 +23,6 @@ $base0c: #8abeb7;
 $base0d: #81a2be;
 $base0e: #b294bb;
 $base0f: #a3685a;
+
+@import "minimal-mistakes"; // main partials
+
