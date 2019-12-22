@@ -30,15 +30,22 @@
         <a href="{{ post.url | relative_url }}" rel="permalink">{{ title }}</a>
       {% endif %}
     </h2>
-
+    <!-- changes made by mnorris from original _includes/archive-single.html file begin here -->
     <p class="page__meta">
+    <!-- includes post date below link to posts -->
     {% if post.date %}
         <i class="fa fa-fw fa-calendar" aria-hidden="true"></i> <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y " }}</time>&emsp;
     {% endif %}
     {% if post.read_time %}
       <i class="far fa-clock" aria-hidden="true"></i> {% include read-time.html %}</p>
     {% endif %}
-    {% if post.excerpt %}<p class="archive__item-excerpt" itemprop="description">{{ post.excerpt | markdownify | strip_html | truncate: 160 }}</p>{% endif %}
+    <!-- changed truncate to larger value (more characters in previews) -->
+    {% if post.excerpt %}<p class="archive__item-excerpt" itemprop="description">{{ post.excerpt | markdownify | strip_html | truncate: 320 }}</p>{% endif %}
+    <!-- includes tags in post previews -->
+    <i class="fas fa-tags"></i>
+    {% for tag in post.tags %}
+      <a href="/tags/#{{ tag }}" class="page__meta btn" rel="tag">{{ tag }}</a>
+    {% endfor %}
   </article>
 </div>
 
