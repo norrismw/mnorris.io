@@ -1,6 +1,6 @@
 # main links
 main:
-  - titel: "Home"
+  - title: "Home"
     url: /
   - title: "Posts by Category"
     url: /categories/
