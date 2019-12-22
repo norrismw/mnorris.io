@@ -41,11 +41,6 @@
     {% endif %}
     <!-- changed truncate to larger value (more characters in previews) -->
     {% if post.excerpt %}<p class="archive__item-excerpt" itemprop="description">{{ post.excerpt | markdownify | strip_html | truncate: 320 }}</p>{% endif %}
-    <!-- includes tags in post previews -->
-<!--    <i class="fas fa-tags"></i> -->
-    {% for tag in post.tags %}
-      <a href="/tags/#{{ tag }}" class="page__meta btn" rel="tag">{{ tag }}</a>
-    {% endfor %}
   </article>
 </div>
 
