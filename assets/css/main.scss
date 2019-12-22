@@ -7,22 +7,22 @@
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 
 /* twilight syntax highlighting */
-$base00: #1e1e1e !important;
-$base01: #323537 !important;
-$base02: #464b50 !important;
-$base03: #5f5a60 !important;
-$base04: #838184 !important;
-$base05: #a7a7a7 !important;
-$base06: #c3c3c3 !important;
+$base00: #1d1f21 !important;
+$base01: #282a2e !important;
+$base02: #373b41 !important;
+$base03: #969896 !important;
+$base04: #b4b7b4 !important;
+$base05: #c5c8c6 !important;
+$base06: #e0e0e0 !important;
 $base07: #ffffff !important;
-$base08: #cf6a4c !important;
-$base09: #cda869 !important;
-$base0A: #f9ee98 !important;
-$base0B: #8f9d6a !important;
-$base0C: #afc4db !important;
-$base0D: #7587a6 !important;
-$base0E: #9b859d !important;
-$base0F: #9b703f !important;
+$base08: #cc6666 !important;
+$base09: #de935f !important;
+$base0A: #f0c674 !important;
+$base0B: #b5bd68 !important;
+$base0C: #8abeb7 !important;
+$base0D: #81a2be !important;
+$base0E: #b294bb !important;
+$base0F: #a3685a !important;
 
 @import "minimal-mistakes"; // main partials
 
