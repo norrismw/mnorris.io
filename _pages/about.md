@@ -4,12 +4,12 @@ permalink: /about/
 header:
     overlay_image: "/assets/images/site/black_sand.jpg"
 ---
-## Certifications:
+### Certifications:
 * Cisco Certified Network Associate - Routing & Switching (CCNA)
 * Offensive Seucrity Certified Professional (OSCP)
 * SecurityTube Linux Assembly Expert (SLAE32)
 
-## What I Do For Work:
+### What I Do For Work:
 #### Network Architecture, Engineer
 Works as a member of a network and architecture team to design, implement, and troubleshoot network components in multiple technologically-diverse and unique client environments. Design consideration includes security, reliability, and scalability. Assists customers with both traditional architecture and hybrid cloud architecture implementations. Works with a variety of vendor hardware and platforms including Cisco, Fortinet, Cumulus Linux, Amazon Web Services, Microsoft Azure, and others.
 
@@ -20,5 +20,5 @@ Works as a member of a penetration testing team to complete infrastructure, web 
 
 *Areas of interest include: Windows Active Directory; Exploit development; Tool development*
 
-## What I Do For Fun:
+### What I Do For Fun:
 Placeholder
