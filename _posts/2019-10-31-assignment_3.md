@@ -20,13 +20,13 @@ There is a wealth of information available on the subject, and as such, the demo
 
 The rest of this post will aim to explain, analyze, and demonstrate an egg hunter shellcode inspired by the work of Matt Miller.
 
-### Objectives
+## Objectives
 Create a egghunter shellcode that;
 1. Create a working demo of the Egg Hunter
 2. Egg Hunter should be configurable for different payloads
 
-### Egg Hunter Shellcode
-#### Explanation
+## Egg Hunter Shellcode
+### Explanation
 The egg hunter shellcode that will be explained in this section utilizes the `access` system call to search virtual address space for the egg value. The system call number for `access` is decimal `33` which can be determined from the `unistd_32.h` file explained in previous posts. 
 
 ```
@@ -53,7 +53,7 @@ The comparision functionality of the egg hunter shellcode is provided by the str
 
 Through the general processes explained above, the egg will eventually be found in memory and the shellcode immediately following the egg will be executed.
 
-#### Analysis
+### Analysis
 The egg hunter shellcode will be explained below. The assembly code will come first, followed by an explanation of the instructions.
 
 ```nasm
@@ -123,7 +123,7 @@ jmp edi
 
 Finally, after the egg is found, the `JMP` instruction is used to redirect execution to the shellcode. Note that the second `SCASD` instruction will result in the memory address that was initially stored in `EDI` to be `EDI+8`. This means that the `JMP EDI` instruction will result in execution continuing beyond the 8 byte egg at the first byte of the shellcode!
 
-### Full Code
+## Full Code
 
 ```nasm
 ; egghunter.nasm
@@ -170,8 +170,8 @@ inc_address:
     jmp edi
 ```
 
-### Compile & Test
-#### Compiling & Examining the Assembly
+## Compile & Test
+### Compiling & Examining the Assembly
 The egghunter shellcode `egghunter.nasm` is compiled as explained in previous posts. The commands used were run on 64-bit Kali Linux. To start, the code should be assembled with `/usr/bin/nasm` as shown below. As the program is written in x86 assembly, the `elf32` file type is specified using the `-f` flag.
 
 ```shell
@@ -223,7 +223,7 @@ Upon confirmation, the shellcode can be extracted using the bash one-line comman
 \x31\xd2\x66\x81\xca\xff\x0f\x42\x8d\x5a\x04\x6a\x21\x58\xcd\x80\x3c\xf2\x74\xee\xb8\x90\x50\x90\x50\x89\xd7\xaf\x75\xe9\xaf\x75\xe6\xff\xe7
 ```
 
-#### Demonstrating the Egg Hunter
+### Demonstrating the Egg Hunter
 As demonstrated in previous posts, the `sc_test.c` program can be used to test the `egghunter` shellcode. As the Egg Hunter technique is a type of staged payload, the `egghunter` portion cannot be tested without a complementary shellcode that is prepended by the 8-byte egg as explained earlier in this post. With that being said, the `shell_reverse_tcp` reverse shell shellcode from the "Create A Shell_Reverse_TCP Shellcode" paper will be used for this purpose. Additionally, `sc_test.c` has been modified to print the length of the `egghunter` shellcode as well as the length of `shell_reverse_tcp` shellcode prepended with the 8-byte egg.
 
 To test the `egghunter` shellcode with a different payload, simply replace the payload contents below the `/* Current payload: */` comment with the desired shellcode payload. The source code for this file can be found on [GitHub](https://github.com/norrismw/SLAE).

