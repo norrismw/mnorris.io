@@ -5,9 +5,9 @@ header:
     overlay_image: "/assets/images/site/black_sand.jpg"
 ---
 ## Certifications:
-* CCNA Routing & Switching
-* OSCP
-* SLAE32
+* Cisco Certified Network Associate - Routing & Switching (CCNA)
+* Offensive Seucrity Certified Professional (OSCP)
+* SecurityTube Linux Assembly Expert (SLAE32)
 
 ## What I Do For Work:
 #### Network Architecture, Engineer
