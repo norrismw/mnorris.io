@@ -12,12 +12,12 @@ Generally speaking, anti-virus software and intrusion detection systems (IDS) sc
 
 The rest of this post will analyze three existing shellcodes taken from the Shell-Storm website. Using these shellcodes as a starting point, a polymorphic shellcode will be created through modification of the original shellcode. The changes made to each shellcode will be explained as part of the exercise.
 
-## Objectives
+### Objectives
 Create 3 polymorphic shellcodes from 3 pre-existing Shell-Storm shellcodes;
 1. Each polymorphic shellcode should not be longer than 150% of the pre-existing shellcode
 2. Extra points for if the polymorphic shellcode is shorter than the pre-existing shellcode
 
-## Shellcode I: /bin/cat /etc/passwd
+### Shellcode I: /bin/cat /etc/passwd
 #### Shellcode I: Explanation
 The first shellcode that will be examined and altered is `/bin/cat /etc/passwd`. This shellcode uses the `execve` system call to execute the command `/bin/cat /etc/passwd` on the system on which the shellcode is run. The `execve` system call has been explained in many previous posts and therefore will not be explained here.
 
@@ -142,7 +142,7 @@ mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
 ...                         
 ```
 
-## Shellcode II: System Beep
+### Shellcode II: System Beep
 #### Shellcode II: Explanation
 The second shellcode that will be examined and altered is the 'System Beep' shellcode. This shellcode uses two system calls to complete the task of making the system on which the code is executed issue a low tone audible beep. The system calls used in this shellcode are `open` and `iotcl`. 
 
@@ -256,7 +256,7 @@ Shellcode Length: 48
 
 ```
 
-## Shellcode III: Forkbomb
+### Shellcode III: Forkbomb
 #### Shellcode III: Explanation
 The third and final shellcode that will be analyzed and modified is the short, simple, yet highly effective 'Forkbomb' shellcode. Don't let the length and the simplicity of this shellcode fool you, for its effects are powerful. Just 7 bytes in length, the shellcode packs a powerful punch in the form of a denial of service when executed. The 'Forkbomb' shellcode utilizes the `fork` system call to accomplish this task. 
 

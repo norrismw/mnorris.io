@@ -10,12 +10,12 @@ In this post, a crypter program will be created and demonstrated that uses the A
 
 In general, encryption is used to obfuscate and secure data in such a way that only authorized parties (those with the key) can access it. While encrypted messages can still be intercepted, the encrypted contents will be unintelligible to those without the decryption key. For shellcode, encryption and decryption can be used to obfuscate the shellcode within in an attempt to evade anti-virus softare. Shellcode can first be encrypted with an encryptor program, and then can be placed into a file along with decryption logic that can be compiled and run as a standalone program. The idea is that the shellcode will be obfuscated until the program is run which in turn decrypts and executes the original shellcode payload.
 
-## Objectives
+### Objectives
 Create a custom crypter;
 1. Any existing encryption schema may be used
 2. Any programming language may be used
 
-## Encryption/Decryption Demonstration
+### Encryption/Decryption Demonstration
 For this assignment, the `execve` shellcode from the custom encoding assignment will be reused to demonstrate the encryption and decryption process. This shellcode has been demonstrated, explained, and tested in previous posts. Upon execution, this shellcode will spawn a new `/bin/sh` shell. The unencrypted payload is shown below for future reference.
 
 ```shell

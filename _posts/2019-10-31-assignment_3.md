@@ -20,12 +20,12 @@ There is a wealth of information available on the subject, and as such, the demo
 
 The rest of this post will aim to explain, analyze, and demonstrate an egg hunter shellcode inspired by the work of Matt Miller.
 
-## Objectives
+### Objectives
 Create a egghunter shellcode that;
 1. Create a working demo of the Egg Hunter
 2. Egg Hunter should be configurable for different payloads
 
-## Egg Hunter Shellcode
+### Egg Hunter Shellcode
 #### Explanation
 The egg hunter shellcode that will be explained in this section utilizes the `access` system call to search virtual address space for the egg value. The system call number for `access` is decimal `33` which can be determined from the `unistd_32.h` file explained in previous posts. 
 
@@ -123,7 +123,7 @@ jmp edi
 
 Finally, after the egg is found, the `JMP` instruction is used to redirect execution to the shellcode. Note that the second `SCASD` instruction will result in the memory address that was initially stored in `EDI` to be `EDI+8`. This means that the `JMP EDI` instruction will result in execution continuing beyond the 8 byte egg at the first byte of the shellcode!
 
-## Full Code
+### Full Code
 
 ```nasm
 ; egghunter.nasm
@@ -170,7 +170,7 @@ inc_address:
     jmp edi
 ```
 
-## Compile & Test
+### Compile & Test
 #### Compiling & Examining the Assembly
 The egghunter shellcode `egghunter.nasm` is compiled as explained in previous posts. The commands used were run on 64-bit Kali Linux. To start, the code should be assembled with `/usr/bin/nasm` as shown below. As the program is written in x86 assembly, the `elf32` file type is specified using the `-f` flag.
 

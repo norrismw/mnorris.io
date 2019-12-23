@@ -12,12 +12,12 @@ Once the original shellcode is encoded, a decoder stub must be included with the
 
 For this post, the creation of a custom shellcode encoder written in Python and the complementary assembly decoder will be explained and demonstrated. The shellcode that will be encoded is the `execve-stack` shellcode from the SLAE course materials. The command chosen for `execve-stack` is `/bin/sh`.
 
-## Objectives
+### Objectives
 Create a shellcode encoder;
 1. Create a custom encoding scheme
 2. Demonstrate proof of concept using `execve-stack` as the shellcode
 
-## Encoding Scheme
+### Encoding Scheme
 The shellcode is first encoded using the logical `NOT` operator. Following this, the `NOT` encoded shellcode is encoded once again using the `XOR` operator.
 
 #### Explanation
@@ -50,7 +50,7 @@ Conversely, any `XOR` operation in which both operands are different will result
 
 Due to this property, as long as an `XOR` byte is chosen that does not exist in the `NOT` encoded shellcode (or any other shellcode, for that atter), it is guaranteed that no null bytes will exist in the resultant `XOR` encoded shellcode. 
 
-## NX-Encoder.py
+### NX-Encoder.py
 The full code for the `NOT` `XOR` encoder titled `NX-Encoder.py` is shown below. A demonstration of the encoder will follow the code.
 
 ```python
@@ -138,11 +138,11 @@ XOR Byte: 0xe4
 
 The output from `NX-Encoder.py` is formatted as hexadecimal byte values for use in `nx-decoder.nasm`, which is explained in the following section.
 
-## Decoder
+### Decoder
 #### Explanation
 The purpose of a decoder stub is to first undo the encoding process, and then to execute the un-encoded shellcode. To reverse the operations performed on the shellcode by `NX-Encoder.py`, the decoder stub will `XOR` each byte, and then `NOT` each byte. The first `XOR` operand is the encoded shellcode byte and the second operand is the `XOR` byte, as given by `NX-Encoder.py`. The decoder stub follows the byte string one byte at a time performing these operations. That is to say that each byte is subjected to the `XOR` operation and then to the `NOT` operation before the decoder continues on to the next byte and repeats the operations. Once the delimeter value that is appended to the end of the encoded shellcode is reached, the decoder jumps to the unencoded shellcode, thus executing the code.
 
-## Template: nx-decoder.nasm
+### Template: nx-decoder.nasm
 The assembly instructions for `nx-decoder.nasm` are shown below. Note that some values must be replaced before the decoder will function. Specifically, the `XOR` delimiter value, the `XOR` byte value, and the encoded hexadecimal shellcode should replace the `0xDELIMITER`, `0xXOR_BYTE`, and `SHELLCODE_PLACEHOLDER` text, respectively.
 
 ```nasm
@@ -218,7 +218,7 @@ If the `ZF` flag is not set (it will only be set once decoding is complete), the
 
 Once the first encoded byte is decoded using `XOR` and `NOT` the value of the `ESI` register is incremented by one by the `INC ESI` instruction. Therefore, the second encoded shellcode byte is now contained in `ESI`. The `JMP SHORT decode` instruction is used to loop over the instructions as outlined above to decode the second encoded shellcode byte. This process will continue until the deilimter byte `0x7c` is encountered, at which point execution will jump to the fully decoded `execve-stack` shellcode!
 
-## Demonstration: nx-decoder.nasm
+### Demonstration: nx-decoder.nasm
 The version of `nx-decoder.nasm` shown below includes the `XOR` delimiter byte, the `XOR` byte, and the encoded `execve-stack` shellcode as returned by `NX-Encoder.nasm`. This code will be used for demonstration purposes.
 
 ```nasm

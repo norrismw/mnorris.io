@@ -14,12 +14,12 @@ Once analysis of the C program is complete, the program will be re-written using
 
 The third section will demonstrate a program written in Python that allows a user to configure an IP address and port number to be used in the Shell_Reverse_TCP shellcode.
 
-## Objectives
+### Objectives
 Create a Shell_Reverse_TCP shellcode that;
 1. Connects to an easily configurable IP address and port number
 2. Executes a shell on a successful connection
 
-## Analysis of Shell_Reverse_TCP.c
+### Analysis of Shell_Reverse_TCP.c
 The following code has been commented in a way that aims to break the program down into distinct sections to be referenced during analysis. If a section of code has already been explained previously, then either a reference to a previous explanation will be made, or the previous explanation will be reused within this post. A brief explanation will be provided for new concepts and/or functions.
 
 ```c
@@ -115,7 +115,7 @@ _Note from the author:_ This explanation has been reused from a previous post as
 
 Finally, the `execve` function is called. The `execve` function executes the program pointed to by the first argument, `filename`. The second argument, `argv`, is a pointer to an array of argument strings that should be passed to `filename`. The final argument expected by `execve` is a pointer to an array of strings that are passed as environment to the newly-executed `filename` program. The `argv` and `envp` arguments must include a NULL pointer at the end of the array. Additionally, `argv[0]` should contain the filename assosicated with the program being executed (i.e. `filename`). In the analyzed program, the `/bin/sh` file will be executed with no additional arguments or environments being passed.
 
-## From C to Shellcode
+### From C to Shellcode
 Now that the analysis of the TCP reverse shell C code is complete, it is easier to determine which system calls are necessary to create a functional TCP reverse shell in assembly. From analysis, it is clear that system calls will need to be made to the following functions in the following order:
 1. `socket`
 2. `connect`
@@ -332,7 +332,7 @@ int 0x80
 
 To prepare the three arguments for `execve`, the `/bin/sh` string is first stored on the stack using `PUSH` instructions. The first `PUSH` shown in the code above serves to `NULL` terminate the `/bin/sh` string. Note that `EDX` is `NULL` and will be passed as the third argument to `execve`. Next, the `/bin/sh` string itself is pushed to the stack. Then, the empty `EDX` register value is moved to `ECX` which will be passed as the second argument to `execve`. At this point, `ESP` stores the memory address of where the `/bin/sh` string is stored, and hence this memory address is moved to `EBX` which will be passed as the first argument for `execve`. The `execve` system call number is moved into `AL` before the software interrupt occurs.
 
-## Completed Assembly Program
+### Completed Assembly Program
 Shown below is the assembly program described above in its entirety. Some of the comments from the code above have been removed. The fully commented version of the code can be found on GitHub.
 
 ```nasm
@@ -401,7 +401,7 @@ _start:
     int 0x80
 ```
 
-## Compile & Test
+### Compile & Test
 #### Testing Assembly
 The TCP reverse shell assembly code can be compiled and tested in the following manner. The commands used were run on 64-bit Kali Linux. To start, the code should be assembled with `/usr/bin/nasm` as shown below. As the program is written in x86 assembly, the `elf32` file type is specified using the `-f` flag.
 
@@ -527,7 +527,7 @@ root@kali:~/workspace/SLAE/assignments/0x02# ./sc_test
 Shellcode Length: 88
 ```
 
-## Wrapper Program for IP & Port Configuration
+### Wrapper Program for IP & Port Configuration
 The remote IP address and the remote port to be included in the TCP reverse shell shellcode can be configured using the Python program explained below. The wrapper program configured in the last section of the previous post has been modified to include reverse shell shellcode, and the functionality to configure a remote IP address and port for the target system to connect to. The output below shows the usage options of the program.
 
 ```shell

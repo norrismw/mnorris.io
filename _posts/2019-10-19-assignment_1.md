@@ -14,12 +14,12 @@ After analysis of the C program is complete, the code can more easily be re-writ
 
 Finally, the third section of this paper demonstrates a program written in Python that allows a user to configure a port number to be used in the Shell_Bind_TCP shellcode.
 
-## Objectives
+### Objectives
 Create a Shell_Bind_TCP shellcode that;
 1. Binds to an easily configurable port number
 2. Executes a shell on an incoming connection
 
-## Analysis of Shell_Bind_TCP.c
+### Analysis of Shell_Bind_TCP.c
 The following code has been commented in a way that aims to break the program down into distinct sections to be referenced during analysis. A brief explanation of each commented code section will be provided in this section of the post.
 
 ```c
@@ -116,7 +116,7 @@ Next, a `for` loop is used to iterate over the `dup2` function three times, pass
 
 Finally, the `execve` function is called. The `execve` function executes the program pointed to by the first argument, `filename`. The second argument, `argv`, is a pointer to an array of argument strings that should be passed to `filename`. The final argument expected by `execve` is a pointer to an array of strings that are passed as environment to the newly-executed `filename` program. The `argv` and `envp` arguments must include a NULL pointer at the end of the array. Additionally, `argv[0]` should contain the filename assosicated with the program being executed (i.e. `filename`). In the analyzed program, the `/bin/sh` file will be executed with no additional arguments or environments being passed.
 
-## From C to Shellcode
+### From C to Shellcode
 With the analysis of the TCP bind shell C program complete, the process for converting the code to assembly language has been simplified. From the analysis, it is clear that a system call will need to be made for the following functions in the following order:
 1. `socket`
 2. `bind`
@@ -339,7 +339,7 @@ int 0x80
 
 Another `PUSH` instruction is used which serves as a delimeter for the second and third arguments. Immediately after the referenced `PUSH` instruction, the memory address stored in `ESP` is moved to `EDX` to be pased as the third argument to `execve`. Next, the memory address value in `EBX` which is the location of the `/bin/sh` string in memory is pushed to the stack. Now, the stack contains the memory address of `/bin/sh` string's location in memory followed by `NULL`, and therefore the memory address in `ESP` serves as a pointer to the array of arguments to be passed to `/bin/sh`. The value in `ESP` is moved to `ECX` to be passed as the second argument for `execve`. The `execve` system call number is moved into `AL` before the software interrupt occurs.
 
-## Completed Assembly Program
+### Completed Assembly Program
 Shown below is the assembly program described above in its entirety. Some of the comments from the code above have been removed. The fully commented version of the code can be found on [GitHub](https://github.com/norrismw/SLAE).
 
 ```nasm
@@ -423,7 +423,7 @@ _start:
     int 0x80
 ```
 
-## Compile & Test
+### Compile & Test
 #### Testing Assembly
 With the assembly code written, it is now time to compile and test. The commands shown below were run on 64-bit Kali Linux. First, the code should be assembled with `/usr/bin/nasm` as shown below. As the program is written in x86 assembly, the `elf32` file type is specified using the `-f` flag.
 
@@ -544,7 +544,7 @@ Shellcode Length: 109
 
 In another terminal window, `nc` or `ncat` can be used to test the functionality of the shellcode in its entirety in the same way that the code was tested in a previous section.
 
-## Wrapper Program for Port Configuration
+### Wrapper Program for Port Configuration
 Using Python, the bind port can easily be configured within the shellcode. During the analysis of the assembly code, recall that the port to bind was saved to memory using the `PUSH WORD 0x5c11` instruction during the creation of the IP Socket Address Structure called `addr`. The port number is an unsigned 16-bit integer, so is possible to represent the entire range of ports (`0 - 65535`) using two bytes.
 
 As the `PUSH` instruction stores bytes to the stack in the order of least-signficant to most-significant, `0x5c11` appears in the shellcode as `\x11\x5c`. Knowing this, a program was created to take a user-supplied port number which will be converted to network byte order, converted to hex, formatted, and ultimately used to replace the `\x11\x5c` string present in the base TCP bind shell shellcode. 
