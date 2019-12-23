@@ -5,7 +5,7 @@ header:
     overlay_image: "/assets/images/site/black_sand.jpg"
 ---
 ## Certifications:
-* CCNA
+* CCNA Routing & Switching
 * OSCP
 * SLAE32
 
