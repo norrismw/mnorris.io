@@ -5,7 +5,9 @@ header:
     overlay_image: "/assets/images/site/black_sand.jpg"
 ---
 ## Certifications:
-CCNA, OSCP, SLAE32
+* CCNA
+* OSCP
+* SLAE32
 
 ## What I Do For Work:
 #### Network Architecture, Engineer
