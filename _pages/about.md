@@ -21,4 +21,4 @@ Works as a member of a penetration testing team to complete infrastructure, web 
 *Areas of interest include: Windows Active Directory; Exploit development; Tool development*
 
 ## What I Do For Fun:
-Placeholder
+Placeholder :)
