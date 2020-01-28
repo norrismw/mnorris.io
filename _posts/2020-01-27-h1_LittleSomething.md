@@ -1,7 +1,7 @@
 ---
 title: "HackerOne Write-up: A little something to get you started"
 date: 2020-01-27
-category: [Web Application]
+category: [HackerOne]
 tags: [HackerOne, Web Application, view source]
 header:
 ---
