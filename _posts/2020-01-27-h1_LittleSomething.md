@@ -5,7 +5,6 @@ category: [HackerOne]
 tags: [HackerOne, Web Application, view source]
 header:
 ---
-
 The HackerOne CTF challenge "A little something to get you started" could not get much easier. Given its difficulty rating of "Trivial" I suppose this should come as no surprise. Nonetheless, the challenge introduces the importance of the powerful "View Page Source" option built into browsers.
 
 ## Flag 0
