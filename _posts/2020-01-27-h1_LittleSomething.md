@@ -19,7 +19,7 @@ The source code of the webpage can be viewed by either right clicking the webpag
 
 The source code of the webpage reveals that there is a bit more going on behind the scenes.
 
-`HTML
+```HTML
 <!doctype html>
 <html>
 	<head>
