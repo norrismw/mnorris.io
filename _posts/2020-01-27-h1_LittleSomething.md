@@ -1,5 +1,5 @@
 ---
-title: "HackerOne Write-up: A little something to get you started"
+title: "HackerOne CTF Write-up: A little something to get you started"
 date: 2020-01-27
 category: [HackerOne]
 tags: [HackerOne, Web Application, view source]
