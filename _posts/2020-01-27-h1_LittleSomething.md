@@ -1,11 +1,14 @@
 ---
 title: "HackerOne CTF Write-up: A little something to get you started"
 date: 2020-01-27
-category: [HackerOne]
+category: [HackerOne CTF]
 tags: [HackerOne, Web Application, view source]
 header:
+    teaser: "/assets/images/h1/h1.png"
 ---
 The HackerOne CTF challenge "A little something to get you started" could not get much easier. Given its difficulty rating of "Trivial" I suppose this should come as no surprise. Nonetheless, the challenge introduces the importance of the powerful "View Page Source" option built into browsers.
+
+![h1](/assets/images/h1/h1.png)
 
 ## Flag 0
 The webpage that the user is initially directed to simply contains the message:
