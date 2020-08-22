@@ -7,6 +7,7 @@ header:
 ## Certifications:
 * Cisco Certified Network Associate - Routing & Switching (CCNA)
 * Offensive Seucrity Certified Professional (OSCP)
+* Offensive Security Certified Expert (OSCE)
 * SecurityTube Linux Assembly Expert (SLAE32)
 
 ## What I Do For Work:
